@@ -1,7 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import {pendingNdk} from './state'
-  import {getMeta} from './util'
+  import StickerItem from './StickerItem.svelte'
 
   let stickers = []
 
@@ -25,12 +25,8 @@
   })
 </script>
 
-<ul>
+<ul class="flex flex-col gap-8">
   {#each stickers as sticker (sticker.id)}
-    {@const {r} = getMeta(sticker)}
-    <li class="max-w-full overflow-hidden text-ellipsis">
-      <strong>{sticker.content || 'Unnamed sticker'}</strong> points to
-      <a href={r} class="underline">{r.replace(/.*:\/\//, '')}</a>
-    </li>
+    <li><StickerItem {sticker} /></li>
   {/each}
 </ul>

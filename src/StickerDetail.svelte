@@ -1,7 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import {pendingNdk} from './state'
-  import {getMeta} from './util'
+  import StickerItem from './StickerItem.svelte'
 
   export let id
 
@@ -19,13 +19,9 @@
 {#if loading}
   Loading your sticker...
 {:else if sticker}
-  {@const {r} = getMeta(sticker)}
   <div class="flex flex-col gap-6">
     <h1 class="text-2xl">Here's what we found...</h1>
-    <p>
-      <strong>{sticker.content || "Your sticker"}</strong> points to
-      <a href={r} class="underline">{r.replace(/.*:\/\//, '')}</a>
-    </p>
+    <StickerItem {sticker} />
   </div>
 {:else}
   Sorry, we couldn't find that sticker.

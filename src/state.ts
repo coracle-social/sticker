@@ -18,6 +18,8 @@ export const pendingNdk = (async () => {
     explicitRelayUrls: [
       "wss://relay.damus.io",
       "wss://relay.nostr.band",
+      "wss://relayable.org",
+      "wss://relay.snort.social",
     ],
   })
 
